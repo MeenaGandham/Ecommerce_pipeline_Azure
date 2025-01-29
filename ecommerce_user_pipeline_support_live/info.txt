@@ -1,0 +1,6 @@
+selected resource name:		ecommerce_user_pipeline
+selected resource type:		pipeline
+factory name:			ecommerceversion007
+factory location:		eastus
+subscription id:		995a1f42-8a77-4cd8-accb-3a882ec5cd4b
+time of download (UTC):		Wed, 29 Jan 2025 02:28:36 GMT

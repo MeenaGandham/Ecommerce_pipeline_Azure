@@ -1,0 +1,118 @@
+{
+    "name": "target_parquet_users",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStorage2",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "users_raw_2",
+                "fileSystem": "landingzone2"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": [
+            {
+                "name": "identifierHash",
+                "type": "UTF8"
+            },
+            {
+                "name": "type",
+                "type": "UTF8"
+            },
+            {
+                "name": "country",
+                "type": "UTF8"
+            },
+            {
+                "name": "language",
+                "type": "UTF8"
+            },
+            {
+                "name": "socialNbFollowers",
+                "type": "UTF8"
+            },
+            {
+                "name": "socialNbFollows",
+                "type": "UTF8"
+            },
+            {
+                "name": "socialProductsLiked",
+                "type": "UTF8"
+            },
+            {
+                "name": "productsListed",
+                "type": "UTF8"
+            },
+            {
+                "name": "productsSold",
+                "type": "UTF8"
+            },
+            {
+                "name": "productsPassRate",
+                "type": "UTF8"
+            },
+            {
+                "name": "productsWished",
+                "type": "UTF8"
+            },
+            {
+                "name": "productsBought",
+                "type": "UTF8"
+            },
+            {
+                "name": "gender",
+                "type": "UTF8"
+            },
+            {
+                "name": "civilityGenderId",
+                "type": "UTF8"
+            },
+            {
+                "name": "civilityTitle",
+                "type": "UTF8"
+            },
+            {
+                "name": "hasAnyApp",
+                "type": "UTF8"
+            },
+            {
+                "name": "hasAndroidApp",
+                "type": "UTF8"
+            },
+            {
+                "name": "hasIosApp",
+                "type": "UTF8"
+            },
+            {
+                "name": "hasProfilePicture",
+                "type": "UTF8"
+            },
+            {
+                "name": "daysSinceLastLogin",
+                "type": "UTF8"
+            },
+            {
+                "name": "seniority",
+                "type": "UTF8"
+            },
+            {
+                "name": "seniorityAsMonths",
+                "type": "UTF8"
+            },
+            {
+                "name": "seniorityAsYears",
+                "type": "UTF8"
+            },
+            {
+                "name": "countryCode",
+                "type": "UTF8"
+            }
+        ]
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}

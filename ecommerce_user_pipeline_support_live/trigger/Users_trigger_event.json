@@ -1,0 +1,25 @@
+{
+    "name": "Users_trigger_event",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "ecommerce_user_pipeline",
+                    "type": "PipelineReference"
+                }
+            }
+        ],
+        "type": "BlobEventsTrigger",
+        "typeProperties": {
+            "blobPathBeginsWith": "/landingzone1/blobs/users_raw_1/",
+            "ignoreEmptyBlobs": true,
+            "scope": "/subscriptions/995a1f42-8a77-4cd8-accb-3a882ec5cd4b/resourceGroups/ecommerce/providers/Microsoft.Storage/storageAccounts/ecommerceversion007",
+            "events": [
+                "Microsoft.Storage.BlobCreated",
+                "Microsoft.Storage.BlobDeleted"
+            ]
+        }
+    }
+}
