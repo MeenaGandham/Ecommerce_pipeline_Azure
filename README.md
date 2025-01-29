@@ -18,13 +18,12 @@ This project follows a modern data pipeline architecture, ensuring:
 E-commerce platform sales data is collected from CSV files stored in Blob Storage. Data is structured (CSV, JSON) and semi-structured (logs, XML).
 
 ### Data Ingestion Using Azure Data Factory (ADF)
-Azure Data Factory (ADF) automates data extraction from sources. The pipeline efficiently manages the ingestion, transformation, and storage of e-commerce data. The process begins with Copy Data activities, where raw data from various sources, such as users, sellers, buyers, and countries, is extracted and stored in Azure Data Lake Storage (ADLS). These operations are orchestrated using event-based and scheduled triggers, ensuring that new data is processed as soon as it arrives or at predefined intervals.Data is stored in Azure Data Lake Storage (ADLS) in Bronze Layer (Raw Data).
-Triggers and scheduling enable automatic ingestion every hour or day.
-!Bronze Layer = unprocessed raw data!
+The Azure Data Factory (ADF) pipeline automates the ingestion, transformation, and storage of e-commerce data using triggers and pipelines. Initially, raw CSV data is extracted from a PC and stored in Landing Zone 1 within Azure Data Lake Storage (ADLS). Using scheduled triggers, ADF pipelines copy and transform the data, converting it from CSV to Parquet, and store it in Landing Zone 2 for optimized processing. The data is then processed through Databricks notebooks, following the Bronze → Silver → Gold transformation stages, ensuring data is cleaned, structured, and enriched for analytics. Finally, SQL queries in Databricks analyze the refined Gold layer data, enabling efficient querying and reporting within the Azure Cloud environment.
+These operations are orchestrated using event-based and scheduled triggers, ensuring that new data is processed as soon as it arrives or at predefined intervals.
 
 ### Data Processing & Transformation Using Azure Databricks (ETL)
-Azure Databricks (Apache Spark) processes the raw data:
-- Cleans missing values, handles duplicates.
+- Azure Databricks (Apache Spark) processes the raw data and puta it in the bronze layer.!Bronze Layer = unprocessed raw data!
+- Later cleans missing values, handles duplicates.
 - Converts timestamps, normalizes customer/product data.
 - Joins tables to enrich sales records with customer & product details.
 - Transformed data is stored back in Azure Data Lake (Silver Layer).
