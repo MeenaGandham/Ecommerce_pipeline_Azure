@@ -1,0 +1,84 @@
+{
+    "name": "landingzone2_databricks",
+    "properties": {
+        "activities": [
+            {
+                "name": "Bronze",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/vkakollu2799@gmail.com/ecommerce_bronze"
+                },
+                "linkedServiceName": {
+                    "referenceName": "ecomGold",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Silver",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Bronze",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/vkakollu2799@gmail.com/ecommerce_silver"
+                },
+                "linkedServiceName": {
+                    "referenceName": "ecomGold",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "gold",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Silver",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/vkakollu2799@gmail.com/ecommerce_gold"
+                },
+                "linkedServiceName": {
+                    "referenceName": "ecomGold",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2025-01-27T01:43:33Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
