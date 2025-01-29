@@ -1,4 +1,4 @@
-# ecommerce_datapipeline
+# Ecommerce Datapipeline with Azure and Databricks
 ## Overview
 This project is a real-time data pipeline designed to ingest, process, store, and visualize e-commerce data efficiently using Azure Cloud services. The pipeline ensures scalability, automation, and high performance for data-driven decision-making.
 
@@ -32,5 +32,10 @@ Silver Layer = Cleaned and enriched data.
 - Read cleaned data from the Silver Layer; aggregate, join, and optimize for business insights.
 - Transformed data is stored back in Azure Data Lake (Gold Layer).
 Gold Layer = aggregated and denormalized data.
+
+### SQL-Based Analysis & Reporting in Databricks
+After data is processed and stored in the Gold Layer, Databricks SQL is used for analytics. SQL queries extract insights directly from Delta Tables in Databricks. Databricks SQL Dashboards provide real-time business intelligence.
+
+
 
 
