@@ -18,7 +18,7 @@ This project follows a modern data pipeline architecture, ensuring:
 E-commerce platform sales data is collected from CSV files stored in Blob Storage. Data is structured (CSV, JSON) and semi-structured (logs, XML).
 
 ### Data Ingestion Using Azure Data Factory (ADF)
-Azure Data Factory (ADF) automates data extraction from sources. Data is stored in Azure Data Lake Storage (ADLS) in Bronze Layer (Raw Data).
+Azure Data Factory (ADF) automates data extraction from sources. The pipeline efficiently manages the ingestion, transformation, and storage of e-commerce data. The process begins with Copy Data activities, where raw data from various sources, such as users, sellers, buyers, and countries, is extracted and stored in Azure Data Lake Storage (ADLS). These operations are orchestrated using event-based and scheduled triggers, ensuring that new data is processed as soon as it arrives or at predefined intervals.Data is stored in Azure Data Lake Storage (ADLS) in Bronze Layer (Raw Data).
 Triggers and scheduling enable automatic ingestion every hour or day.
 !Bronze Layer = unprocessed raw data!
 
