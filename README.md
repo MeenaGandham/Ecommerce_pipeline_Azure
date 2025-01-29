@@ -20,7 +20,7 @@ E-commerce platform sales data is collected from CSV files stored in Blob Storag
 ### Data Ingestion Using Azure Data Factory (ADF)
 Azure Data Factory (ADF) automates data extraction from sources. Data is stored in Azure Data Lake Storage (ADLS) in Bronze Layer (Raw Data).
 Triggers and scheduling enable automatic ingestion every hour or day.
-* Bronze Layer = unprocessed raw data
+!Bronze Layer = unprocessed raw data!
 
 ### Data Processing & Transformation Using Azure Databricks (ETL)
 Azure Databricks (Apache Spark) processes the raw data:
@@ -28,10 +28,10 @@ Azure Databricks (Apache Spark) processes the raw data:
 - Converts timestamps, normalizes customer/product data.
 - Joins tables to enrich sales records with customer & product details.
 - Transformed data is stored back in Azure Data Lake (Silver Layer).
-Silver Layer = Cleaned and enriched data.
+!Silver Layer = Cleaned and enriched data!
 - Read cleaned data from the Silver Layer; aggregate, join, and optimize for business insights.
 - Transformed data is stored back in Azure Data Lake (Gold Layer).
-Gold Layer = aggregated and denormalized data.
+!Gold Layer = aggregated and denormalized data!
 
 ### SQL-Based Analysis & Reporting in Databricks
 After data is processed and stored in the Gold Layer, Databricks SQL is used for analytics. SQL queries extract insights directly from Delta Tables in Databricks. Databricks SQL Dashboards provide real-time business intelligence.
