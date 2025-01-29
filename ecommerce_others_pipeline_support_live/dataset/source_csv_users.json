@@ -1,0 +1,121 @@
+{
+    "name": "source_csv_users",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStorage1",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "users_raw_1",
+                "fileSystem": "landingzone1"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": [
+            {
+                "name": "identifierHash",
+                "type": "String"
+            },
+            {
+                "name": "type",
+                "type": "String"
+            },
+            {
+                "name": "country",
+                "type": "String"
+            },
+            {
+                "name": "language",
+                "type": "String"
+            },
+            {
+                "name": "socialNbFollowers",
+                "type": "String"
+            },
+            {
+                "name": "socialNbFollows",
+                "type": "String"
+            },
+            {
+                "name": "socialProductsLiked",
+                "type": "String"
+            },
+            {
+                "name": "productsListed",
+                "type": "String"
+            },
+            {
+                "name": "productsSold",
+                "type": "String"
+            },
+            {
+                "name": "productsPassRate",
+                "type": "String"
+            },
+            {
+                "name": "productsWished",
+                "type": "String"
+            },
+            {
+                "name": "productsBought",
+                "type": "String"
+            },
+            {
+                "name": "gender",
+                "type": "String"
+            },
+            {
+                "name": "civilityGenderId",
+                "type": "String"
+            },
+            {
+                "name": "civilityTitle",
+                "type": "String"
+            },
+            {
+                "name": "hasAnyApp",
+                "type": "String"
+            },
+            {
+                "name": "hasAndroidApp",
+                "type": "String"
+            },
+            {
+                "name": "hasIosApp",
+                "type": "String"
+            },
+            {
+                "name": "hasProfilePicture",
+                "type": "String"
+            },
+            {
+                "name": "daysSinceLastLogin",
+                "type": "String"
+            },
+            {
+                "name": "seniority",
+                "type": "String"
+            },
+            {
+                "name": "seniorityAsMonths",
+                "type": "String"
+            },
+            {
+                "name": "seniorityAsYears",
+                "type": "String"
+            },
+            {
+                "name": "countryCode",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}

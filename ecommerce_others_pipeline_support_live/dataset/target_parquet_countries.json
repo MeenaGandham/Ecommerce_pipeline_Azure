@@ -1,0 +1,21 @@
+{
+    "name": "target_parquet_countries",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStorage2",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "countries_raw_2",
+                "fileSystem": "landingzone2"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": []
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
