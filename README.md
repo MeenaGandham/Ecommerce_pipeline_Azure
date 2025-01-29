@@ -12,6 +12,7 @@ This project follows a modern data pipeline architecture, ensuring:
 - Data visualization & analytics using Power BI or Tableau
 
 ## Architecture Overview
+![Project Architecture](resources/architecture.png)
 
 ### Data Sources (Raw Data Ingestion)
 E-commerce platform sales data is collected from CSV files stored in Blob Storage. Data is structured (CSV, JSON) and semi-structured (logs, XML).
@@ -19,8 +20,7 @@ E-commerce platform sales data is collected from CSV files stored in Blob Storag
 ### Data Ingestion Using Azure Data Factory (ADF)
 Azure Data Factory (ADF) automates data extraction from sources. Data is stored in Azure Data Lake Storage (ADLS) in Bronze Layer (Raw Data).
 Triggers and scheduling enable automatic ingestion every hour or day.
-Bronze Layer = Stores unprocessed raw data
-!image
+* Bronze Layer = unprocessed raw data
 
 ### Data Processing & Transformation Using Azure Databricks (ETL)
 Azure Databricks (Apache Spark) processes the raw data:
