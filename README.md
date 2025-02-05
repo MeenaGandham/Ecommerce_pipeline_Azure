@@ -10,6 +10,10 @@ The pipeline handles four key datasets:
 - **Sellers, Buyers, and Countries**: These are **static** tables with minimal updates.
 - **Users**: **Dynamic** tables that get generated frequently and is **partitioned into 5 chunks** before processing using the "Chunk_data.ipynb" file in the repository.
 The raw data is stored in **Azure Data Lake Storage (ADLS)** in a **Landing Zone 1**.
+![AZ storage](resources/AZ1.jpeg)
+![AZ2 storage](resources/AZ2.jpeg)
+![AZ5 storage](resources/AZ5.jpeg)
+
 
 ## 📤 Data Ingestion with Azure Data Factory (ADF)
 
@@ -24,6 +28,9 @@ The raw data is stored in **Azure Data Lake Storage (ADLS)** in a **Landing Zone
 - **Users Data** → **Event-based** trigger, executing when a new file is uploaded.
 
 The transformed data is stored in **Landing Zone 2**:
+![AZ3 storage](resources/AZ3.jpeg)
+![AZ4 storage](resources/AZ4.jpeg)
+
 
 ## 🛠 Data Processing with Databricks
 
@@ -33,16 +40,16 @@ The transformed data is stored in **Landing Zone 2**:
 
   - **Bronze Layer** → Raw Parquet files stored as **Delta Tables**.
   - **Silver Layer** → Cleaned and structured tables.
-  - **Gold Layer** → Aggregated and transformed data for analysis.
+  - **Gold Layer** → Aggregated as one table data for analysis.
 
 🔹 *Bronze → Silver → Gold Pipeline*
-![Databricks Pipeline](ADF4.png)
+![Databricks Pipeline](ADF3.jpeg)
 
 ### 2️⃣ **Gold Layer (Final Aggregated Data)**
 - The **final Gold Table** is a **combination of all the tables** (Users, Sellers, Buyers, Countries) optimized for analytics.
 
-🔹 *Databricks Gold Layer Processing*
-![Databricks Gold Processing](AZ1.jpeg)
+### Trigger for each pipeline: ###
+![trigger](ADF4.jpeg)
 
 ---
 
@@ -50,7 +57,8 @@ The transformed data is stored in **Landing Zone 2**:
 
 - **SQL transformations** were performed in Databricks to **generate analytical insights**.
 - **Gold tables** were used for **business intelligence reporting** in **Power BI**.
-- **Created an interactive Power BI dashboard** to visualize user behavior, trends, and other insights.
+- **Created an interactive Power BI dashboard** by connecting Databricks and PowerBI(using delta silver tables coverted to sql tables in databricks) to visualize user behavior, trends, and other insights.
+![connection](resources/connection.jpeg)
 
 🔹 *Final Power BI Dashboard*
 ![Power BI Dashboard](resources/Ecommerce_d.jpeg)
