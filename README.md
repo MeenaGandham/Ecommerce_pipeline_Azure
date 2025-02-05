@@ -36,7 +36,7 @@ These operations are orchestrated using event-based and scheduled triggers, ensu
 After data is processed and stored in the Gold Layer, Databricks SQL and Power BI is used for analytics and visualization. SQL queries extract insights directly from Delta Tables in Databricks.
 
 ### Power BI Dashboard 
-![DASHBOARD1](resources/ecommerce_d.jpeg)
+![DASHBOARD1](resources/Ecommerce_d.jpeg)
 
 
 
