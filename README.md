@@ -1,7 +1,7 @@
 # 🚀 Azure E-Commerce Data Pipeline
 
 This project implements an end-to-end **E-commerce Data Pipeline** using **Azure Storage, Azure Data Factory (ADF), Databricks, and Power BI**. The pipeline ingests, processes, and analyzes user, seller, buyer, and country data efficiently using **bronze, silver, and gold layers** (**medallion architecture**) for data transformation. 
-![Architecture Overview](resources/archictecture.png)
+![Architecture Overview](resources/architecture.png)
 
 ## 📂 Data Sources and Structure
 
