@@ -37,6 +37,8 @@ After data is processed and stored in the Gold Layer, Databricks SQL and Power B
 
 ### Power BI Dashboard 
 ![DASHBOARD1](resources/Ecommerce_d.jpeg)
+![DASHBOARD2](resources/ecommerce_d2.jpeg)
+
 
 
 
