@@ -1,45 +1,78 @@
-# Ecommerce Datapipeline with Azure and Databricks
-## Overview
-This project is a real-time data pipeline designed to ingest, process, store, and visualize e-commerce data efficiently using Azure Cloud services. The pipeline ensures scalability, automation, and high performance for data-driven decision-making.
+# 🚀 Azure E-Commerce Data Pipeline
 
-## Project Objective
-The goal of this project is to automate the processing of e-commerce sales data from multiple sources (such as transactional databases, APIs, and CSV files), transform it into structured datasets, and store it in a cloud-based data warehouse (Snowflake/Azure Synapse) for analytics and business intelligence.
-This project follows a modern data pipeline architecture, ensuring:
-- Efficient data ingestion using Azure Data Factory (ADF)
-- Robust ETL processing using Azure Databricks (Apache Spark)
-- Organized data storage using Azure Data Lake (ADLS)
-- Optimized querying using Snowflake/Azure Synapse
-- Data visualization & analytics using Power BI or Tableau
+This project implements an end-to-end **E-commerce Data Pipeline** using **Azure Storage, Azure Data Factory (ADF), Databricks, and Power BI**. The pipeline ingests, processes, and analyzes user, seller, buyer, and country data efficiently using **bronze, silver, and gold layers** (**medallion architecture**) for data transformation. 
+![Architecture Overview](resources/archictecture.png)
 
-## Architecture Overview
-![Project Architecture](resources/architecture.png)
+## 📂 Data Sources and Structure
 
-### Data Sources (Raw Data Ingestion)
-E-commerce platform sales data is collected from CSV files stored in Blob Storage. Data is structured (CSV, JSON) and semi-structured (logs, XML).
+The pipeline handles four key datasets:
 
-### Data Ingestion Using Azure Data Factory (ADF)
-The Azure Data Factory (ADF) pipeline automates the ingestion, transformation, and storage of e-commerce data using triggers and pipelines. Initially, raw CSV data is extracted from a PC and stored in Landing Zone 1 within Azure Data Lake Storage (ADLS). Using scheduled triggers, ADF pipelines copy and transform the data, converting it from CSV to Parquet, and store it in Landing Zone 2 for optimized processing. The data is then processed through Databricks notebooks, following the Bronze → Silver → Gold transformation stages, ensuring data is cleaned, structured, and enriched for analytics. Finally, SQL queries in Databricks analyze the refined Gold layer data, enabling efficient querying and reporting within the Azure Cloud environment.
-These operations are orchestrated using event-based and scheduled triggers, ensuring that new data is processed as soon as it arrives or at predefined intervals.
+- **Sellers, Buyers, and Countries**: These are **static** tables with minimal updates.
+- **Users**: **Dynamic** tables that get generated frequently and is **partitioned into 5 chunks** before processing using ![ipynb][(Chunk_data.ipynb).
+The raw data is stored in **Azure Data Lake Storage (ADLS)** in a **Landing Zone 1**.
 
-### Data Processing & Transformation Using Azure Databricks (ETL)
-- Azure Databricks (Apache Spark) processes the raw data and puta it in the bronze layer.!Bronze Layer = unprocessed raw data!
-- Later cleans missing values, handles duplicates.
-- Converts timestamps, normalizes customer/product data.
-- Joins tables to enrich sales records with customer & product details.
-- Transformed data is stored back in Azure Data Lake (Silver Layer).
-!Silver Layer = Cleaned and enriched data!
-- Read cleaned data from the Silver Layer; aggregate, join, and optimize for business insights.
-- Transformed data is stored back in Azure Data Lake (Gold Layer).
-!Gold Layer = aggregated and denormalized data!
+## 📤 Data Ingestion with Azure Data Factory (ADF)
 
-### SQL-Based Analysis & Visualization
-After data is processed and stored in the Gold Layer, Databricks SQL and Power BI is used for analytics and visualization. SQL queries extract insights directly from Delta Tables in Databricks.
+### 1️⃣ **Data Movement Pipelines**
+- **Sellers, Buyers, and Countries**: A **single ADF pipeline** extracts CSV files, converts them to **Parquet**, and stores them in **Landing Zone 2**.
+![ADF Pipelines1](resources/ADF1.jpeg)
+- **Users Data**: A **separate ADF pipeline** processes user chunks since it updates frequently.
+![ADF Pipelines2](resources/ADF2.jpeg)
 
-### Power BI Dashboard 
-![DASHBOARD1](resources/Ecommerce_d.jpeg)
-![DASHBOARD2](resources/ecommerce_d2.jpeg)
+### 2️⃣ **Automated Triggers**
+- **Sellers, Buyers, Countries** → **Scheduled** trigger for periodic execution.
+- **Users Data** → **Event-based** trigger, executing when a new file is uploaded.
+
+The transformed data is stored in **Landing Zone 2**:
+
+## 🛠 Data Processing with Databricks
+
+### 1️⃣ **Trigger-Driven Bronze-Silver-Gold Pipeline**
+- A **trigger in ADF** is set up to **initiate the Bronze-Silver-Gold pipeline whenever new data is added to Landing Zone 2**.
+- The data pipeline follows **medallion architecture**:
+
+  - **Bronze Layer** → Raw Parquet files stored as **Delta Tables**.
+  - **Silver Layer** → Cleaned and structured tables.
+  - **Gold Layer** → Aggregated and transformed data for analysis.
+
+🔹 *Bronze → Silver → Gold Pipeline*
+![Databricks Pipeline](ADF4.png)
+
+### 2️⃣ **Gold Layer (Final Aggregated Data)**
+- The **final Gold Table** is a **combination of all the tables** (Users, Sellers, Buyers, Countries) optimized for analytics.
+
+🔹 *Databricks Gold Layer Processing*
+![Databricks Gold Processing](AZ1.jpeg)
+
+---
+
+## 📊 Data Analysis & Visualization in Power BI
+
+- **SQL transformations** were performed in Databricks to **generate analytical insights**.
+- **Gold tables** were used for **business intelligence reporting** in **Power BI**.
+- **Created an interactive Power BI dashboard** to visualize user behavior, trends, and other insights.
+
+🔹 *Final Power BI Dashboard*
+![Power BI Dashboard](Ecommerce_d.jpeg)
+![Power BI Dashboard2](ecommerce_d2.jpeg)
+You can download the dashboard here : ![dashboard](ecommerce.pbix)
 
 
+---
 
+## 🎯 Key Features
+✔ **Automated data ingestion** with Azure Data Factory  
+✔ **Trigger-based Bronze-Silver-Gold execution**  
+✔ **Delta Lake storage optimization** using Bronze, Silver, and Gold layers  
+✔ **Databricks-powered ETL** for structured transformations  
+✔ **Power BI analytics** for business insights  
 
+---
+
+## 🚀 Technologies Used
+- **Azure Data Factory (ADF)** - Data ingestion and movement  
+- **Azure Data Lake Storage (ADLS)** - Data storage and structuring  
+- **Databricks(Apache Spark) + Delta Lake** - ETL processing and storage  
+- **Power BI** - Data visualization
+- **Azure Data Lake (ADLS)** - Organized data storage
 
