@@ -43,13 +43,13 @@ The transformed data is stored in **Landing Zone 2**:
   - **Gold Layer** → Aggregated as one table data for analysis.
 
 🔹 *Bronze → Silver → Gold Pipeline*
-![Databricks Pipeline](ADF3.jpeg)
+![Databricks Pipeline](resources/ADF3.jpeg)
 
 ### 2️⃣ **Gold Layer (Final Aggregated Data)**
 - The **final Gold Table** is a **combination of all the tables** (Users, Sellers, Buyers, Countries) optimized for analytics.
 
 ### Trigger for each pipeline: ###
-![trigger](ADF4.jpeg)
+![trigger](resources/ADF4.jpeg)
 
 ---
 
