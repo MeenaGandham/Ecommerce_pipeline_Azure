@@ -32,8 +32,10 @@ These operations are orchestrated using event-based and scheduled triggers, ensu
 - Transformed data is stored back in Azure Data Lake (Gold Layer).
 !Gold Layer = aggregated and denormalized data!
 
-### SQL-Based Analysis & Reporting in Databricks
-After data is processed and stored in the Gold Layer, Databricks SQL is used for analytics. SQL queries extract insights directly from Delta Tables in Databricks. Databricks SQL Dashboards provide real-time business intelligence.
+### SQL-Based Analysis & Visualization
+After data is processed and stored in the Gold Layer, Databricks SQL and Power BI is used for analytics and visualization. SQL queries extract insights directly from Delta Tables in Databricks.
+
+Power BI Dashboard
 
 
 
