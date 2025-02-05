@@ -8,7 +8,7 @@ This project implements an end-to-end **E-commerce Data Pipeline** using **Azure
 The pipeline handles four key datasets:
 
 - **Sellers, Buyers, and Countries**: These are **static** tables with minimal updates.
-- **Users**: **Dynamic** tables that get generated frequently and is **partitioned into 5 chunks** before processing using ![ipynb][(Chunk_data.ipynb).
+- **Users**: **Dynamic** tables that get generated frequently and is **partitioned into 5 chunks** before processing using ![ipynb](Chunk_data.ipynb).
 The raw data is stored in **Azure Data Lake Storage (ADLS)** in a **Landing Zone 1**.
 
 ## 📤 Data Ingestion with Azure Data Factory (ADF)
@@ -53,8 +53,8 @@ The transformed data is stored in **Landing Zone 2**:
 - **Created an interactive Power BI dashboard** to visualize user behavior, trends, and other insights.
 
 🔹 *Final Power BI Dashboard*
-![Power BI Dashboard](Ecommerce_d.jpeg)
-![Power BI Dashboard2](ecommerce_d2.jpeg)
+![Power BI Dashboard](resources/Ecommerce_d.jpeg)
+![Power BI Dashboard2](resources/ecommerce_d2.jpeg)
 You can download the dashboard here : ![dashboard](ecommerce.pbix)
 
 
